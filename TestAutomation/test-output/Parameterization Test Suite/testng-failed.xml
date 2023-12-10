@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Parameterization Test Suite]" guice-stage="DEVELOPMENT">
+  <test name="Testing Parameterization chrome(failed)">
+    <parameter name="password" value="testpassword"/>
+    <parameter name="browser" value="firefox"/>
+    <parameter name="username" value="testuser"/>
+    <classes>
+      <class name="com.test.testcase.flightBooking">
+        <methods>
+          <include name="intializeTest"/>
+          <include name="aTestFlightBooking" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.test.testcase.flightBooking -->
+    </classes>
+  </test> <!-- Testing Parameterization chrome(failed) -->
+</suite> <!-- Failed suite [Parameterization Test Suite] -->

@@ -15,7 +15,6 @@ public class Generic {
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		driver.manage().window().maximize();
-
 	}
 
 	public String getPropertyValue(String propertyName) throws IOException {

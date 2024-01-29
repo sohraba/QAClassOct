@@ -1,4 +1,4 @@
-package com.test.learning;
+package com.test.javalearning;
 
 public class ExcpetionHandling {
 	public static void main(String args[]) {

@@ -1,4 +1,4 @@
-package com.test.learning;
+package com.test.javalearning;
 
 import java.io.IOException;
 

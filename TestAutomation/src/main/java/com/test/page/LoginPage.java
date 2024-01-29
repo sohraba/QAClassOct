@@ -26,13 +26,17 @@ public class LoginPage extends Generic{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	public void login() throws IOException {
+	
+	public void enterUserName() throws IOException {
 		String userName=getPropertyValue("username");
-		String password=getPropertyValue("password");
 		username_textfield.sendKeys(userName);
+	}
+	public void enterPassword() throws IOException {
+		String password=getPropertyValue("password");
 		password_textfield.sendKeys(password);
+	}
+	public void clickSubmitButton() {
 		submit_button.click();
-		
 	}
 
 }

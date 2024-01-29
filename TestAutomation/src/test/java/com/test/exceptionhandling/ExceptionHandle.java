@@ -1,4 +1,4 @@
-package com.test.testcase;
+package com.test.exceptionhandling;
 
 public class ExceptionHandle {
 	public static void main(String args[] ){

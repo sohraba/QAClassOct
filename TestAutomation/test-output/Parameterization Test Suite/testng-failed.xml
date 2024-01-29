@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Parameterization Test Suite]" guice-stage="DEVELOPMENT">
-  <test name="Testing Parameterization chrome(failed)">
+  <test thread-count="5" name="Testing Parameterization chrome(failed)">
     <parameter name="password" value="testpassword"/>
     <parameter name="browser" value="firefox"/>
     <parameter name="username" value="testuser"/>
@@ -9,7 +9,7 @@
       <class name="com.test.testcase.flightBooking">
         <methods>
           <include name="intializeTest"/>
-          <include name="aTestFlightBooking" invocation-numbers="0"/>
+          <include name="aTestFlightBooking"/>
         </methods>
       </class> <!-- com.test.testcase.flightBooking -->
     </classes>

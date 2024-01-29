@@ -1,17 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test thread-count="5" name= "Parallel Tests" parallel = "methods">
-    <classes>
-            <class name="com.test.testcase.ParallelTest"/>
-    </classes>
-  </test> <!-- Test -->
-  
-  <test thread-count="5" name= "Parallel Tests" parallel = "methods">
-    <classes>
-            <class name="com.test.testcase.ParallelTest"/>
-    </classes>
-  </test> <!-- Test -->
-  
-  
-</suite> <!-- Suite -->
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parameterization Test Suite">
+	<test name="Testing Parameterization chrome">
+	<parameter name="browser" value="firefox"/>
+	<parameter name="username" value="testuser"/>
+	<parameter name="password" value="testpassword"/>
+		<classes>
+			<class name="com.test.testcase.flightBooking" />
+		</classes>
+	</test>
+</suite>

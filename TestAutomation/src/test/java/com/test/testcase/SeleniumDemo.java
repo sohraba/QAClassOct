@@ -1,9 +1,15 @@
 package com.test.testcase;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
+import com.test.page.LoginPOM;
+import com.test.page.LoginPage;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+
+
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
@@ -12,26 +18,36 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class SeleniumDemo {
 	WebDriver driver;
 	
-	@BeforeTest
+	@BeforeMethod
 	public void testSetUp() {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		
-		
-		
 		List<WebElement> menuItems = driver.findElements(By.xpath("//ul[@id='menu-main-navigation']/li"));
 		for(int i=1;i<=menuItems.size();i++) {
 			driver.findElement(By.xpath("//ul[@id='menu-main-navigation']/li["+i+"]/a/span")).getText();
 		}
-       
+		
+		Select s=new Select(driver.findElement(By.xpath("")));
+		List<WebElement> allOptions=s.getOptions();
+		for(int i=0;i<allOptions.size();i++) {
+			System.out.print(allOptions.get(i).getText());
+		}
+	}
+	
+	@Test
+	public void testPOM() throws IOException {
+
+		LoginPage loginPage=new LoginPage(driver);
+		loginPage.enterUserName();
+		loginPage.enterPassword();
+		loginPage.clickSubmitButton();
 	}
 
 	@Test
@@ -40,6 +56,7 @@ public class SeleniumDemo {
 		driver.findElement(By.name("userName")).sendKeys("admin");
 		driver.findElement(By.name("password")).sendKeys("admin"); 
 		driver.findElement(By.name("submit")).click(); 
+		
 		
 		//Radio Button
 		driver.get("https://demo.guru99.com/test/newtours/reservation.php");
@@ -62,11 +79,10 @@ public class SeleniumDemo {
 		airlineDropDown.selectByVisibleText("Unified Airlines");
 		
 		driver.findElement(By.name("findFlights")).click();
-		
-		
+		System.out.println(driver.findElement(By.xpath("(//img[@src='images/home.gif']/preceding::tr[1]//b/font)[1]")).getText());		
 	}
 	
-	@Test
+	@Test(enabled=false)
 	public void testUploadFile() {
 		String baseUrl = "https://demo.guru99.com/test/upload/";
 
@@ -78,7 +94,7 @@ public class SeleniumDemo {
         driver.findElement(By.id("terms")).click();
         driver.findElement(By.name("send")).click();
        }
-	@Test
+	@Test(enabled=false)
 	public void getDimension() {
 		driver.get("https://google.com/ncr");
         WebElement searchBox = driver.findElement(By.name("q"));
@@ -86,7 +102,7 @@ public class SeleniumDemo {
         
         System.out.println(dim);
 	}
-		@Test
+	@Test(enabled=false)
 		public void browserAction() throws InterruptedException {
 			driver.navigate().to("https://selenium.dev");
 	        

@@ -27,4 +27,7 @@ public class FlightBooking {
 	public void clickContinue() {
 		continue_Button.click();
 	}
+	public void clickSubmitButton() {
+		submit_button.click();
+	}
 }

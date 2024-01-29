@@ -9,6 +9,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.test.page.LoginPage;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 public class flightBooking {
@@ -18,29 +20,20 @@ public class flightBooking {
 	@Test(dependsOnMethods = "intializeTest")
 	public void aTestFlightBooking(String username,String password) throws IOException {
 		driver.get("https://demo.guru99.com/test/newtours/");
-		WebElement userName=driver.findElement(By.name("userName"));
-		userName.sendKeys(username);
-		driver.findElement(By.name("password")).sendKeys(password); 
-		driver.findElement(By.name("submit")).click(); 
-		userName.click();
+		LoginPage loginPage=new LoginPage(driver);
+		loginPage.enterUserName();
+		loginPage.enterPassword();
+		loginPage.clickSubmitButton();
 		
 	}
 	
-	@Parameters({ "browser" })
-	@Test(description ="This is a test to intialize the driver")
-	public void intializeTest(String browserName) {
-		switch (browserName.toLowerCase()) {
-		case "chrome":
+	@Test
+	public void intializeTest() {
 			driver = new ChromeDriver();
-			break;
-		case "firefox":
-			driver = new FirefoxDriver();
-			break;
-		}
 		
 	}
 	
-	@Test(timeOut = 200,enabled=false,dataProvider="getData",description = "This is the test to login flight demo application")
+	@Test(enabled=false,dataProvider="getData",description = "This is the test to login flight demo application")
 	public void setData(String username, String password) throws InterruptedException
 	{
 		driver.get("https://demo.guru99.com/test/newtours/");
